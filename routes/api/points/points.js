@@ -1,5 +1,5 @@
 var express = require('express');
-var morgan = require('morgan');
+//var morgan = require('morgan');
 var pgClient = require('../../../utils/database_connection');
 var router = express.Router();
 
@@ -18,9 +18,7 @@ router.get('/', function (req, res) {
     for (i=0; i<point.length; i++){
       //point = result.rows[i];
       point[i].location = JSON.parse(point['location']);
-      console.log(point['descripcion']);
     }
-    console.log("HOLAAA");
     res.send(point);
   });
 });
