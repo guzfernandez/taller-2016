@@ -32,5 +32,4 @@ CREATE TABLE public.points
   id integer NOT NULL DEFAULT nextval('points_id_seq'::regclass),
   descripcion character varying(40) NOT NULL,
   location geography(Point,4326)
-)
-;
+);
