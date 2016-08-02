@@ -17,7 +17,7 @@ router.get('/', function (req, res) {
 
     for (i=0; i<point.length; i++){
       //point = result.rows[i];
-      point[i].location = JSON.parse(point[i]['location']);
+      point[i].location = JSON.parse(point['location']);
       console.log(point['descripcion']);
     }
     console.log("HOLAAA");
@@ -34,7 +34,9 @@ router.get('/:id/details', function (req, res) {
   query.on('end', function (result) {
     client.end();
     var point = result.rows[0];
-    point.location = JSON.parse(point['location']);
+    if(point != null){
+      point.location = JSON.parse(point['location']);
+    }
     res.send(point);
   });
 });
