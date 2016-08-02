@@ -15,7 +15,7 @@ router.get('/', function (req, res) {
     client.end();
     var point = result;
 
-    for (i=0; i<point.length; i++){
+    for (var i=0; i<point.length; i++){
       //point = result.rows[i];
       point[i].location = JSON.parse(point['location']);
     }
