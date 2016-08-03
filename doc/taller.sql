@@ -13,5 +13,7 @@ WITH (
 );
 
 
-INSERT INTO points(id, description, location) VALUES(1, 'llllll', ST_GeomFromText('POINT(-71.060316 48.432044)', 4326));
+INSERT INTO points(descripcion, location) VALUES('CEI', ST_GeomFromText('POINT(-34.905456 -54.955609)', 4326));
+INSERT INTO points(descripcion, location) VALUES('Capuchinas', ST_GeomFromText('POINT(-34.905451 -54.95687)', 4326));
+INSERT INTO points(descripcion, location) VALUES('DanielHogar', ST_GeomFromText('POINT(-34.906497 -54.956533)', 4326));
 commit;
