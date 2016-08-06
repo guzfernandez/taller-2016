@@ -8,7 +8,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var pointsApi = require('./routes/api/points/points');
-var checkApi = require('./routes/api/users/check');
+var usersApi = require('./routes/api/users/users');
+var checkApi = require('./routes/api/check/check');
 
 var app = express();
 
@@ -28,7 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api/points', pointsApi);
-app.use('/api/users/check', checkApi);
+app.use('/api/users/users', usersApi);
+app.use('/api/check/check', checkApi);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) { //eslint-disable-line no-unused-vars
@@ -46,7 +48,7 @@ if (app.get('env') === 'development') {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
-      error: err,
+      error: err
     });
   });
 }
@@ -57,7 +59,7 @@ app.use(function (err, req, res, next) { //eslint-disable-line no-unused-vars
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {},
+    error: {}
   });
 });
 
