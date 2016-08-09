@@ -22,6 +22,16 @@ router.get('/', function (req, res) {
   });
 });
 
+router.get('/:id/points', function (req, res) {
+  var client = pgClient.connect();
+  var queryString = 'SELECT * FROM pointcheck WHERE idUser = $1;';
+  var query = client.query(queryString, [req.params.id]);
+  query.on('end', function (result) {
+    client.end();
+    res.send(result.rows);
+  });
+});
+
 router.get('/:id/details', function (req, res) {
   var client = pgClient.connect();
   var queryString = 'SELECT id, descripcion, ST_AsGeoJSON(location) AS location ' +
