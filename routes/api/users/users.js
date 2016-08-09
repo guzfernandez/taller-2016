@@ -24,17 +24,4 @@ router.get('/:nombre/details', function (req, res) {
   });
 });
 
-router.post('/:idUser/:idPoint', function (req, res) {
-  var client = pgClient.connect();
-  var queryString = 'INSERT INTO pointcheck(idUser, idPoint, checkdate) ' +
-    'VALUES ($1, $2, CURRENT_TIMESTAMP);';
-  var query = client.query(queryString, [req.params.idUser], [req.params.idPoint]);
-  query.on('end', function () {
-    client.end();
-    res.send({
-      success:true
-    });
-  });
-});
-
 module.exports = router;

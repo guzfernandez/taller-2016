@@ -5,12 +5,14 @@ var router = express.Router();
 router.post('/:idUser/:idPoint', function (req, res) {
   var client = pgClient.connect();
   var queryString = 'INSERT INTO pointcheck(idUser, idPoint, checkdate) ' +
-    'VALUES ($1, $2, CURRENT_TIMESTAMP);';
+    'VALUES ($1, $2, CURRENT_TIMESTAMP);' +
+    'UPDATE persona SET puntaje = (SELECT puntaje FROM persona WHERE id = $1) + 1 WHERE id = $1;';
   var query = client.query(queryString, [req.params.idUser], [req.params.idPoint]);
   query.on('end', function () {
-    //client.end({
-    //  success:true
-    //});
+    client.end();
+    res.send({
+      status: 'success'
+    });
   });
 });
 
