@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.get('/', function (req, res) {
   var client = pgClient.connect();
-  var query = client.query('SELECT * FROM persona;'/*, [req.params.hola]*/);
+  var query = client.query('SELECT * FROM persona;');
   query.on('end', function (result) {
     client.end();
     res.send(result.rows);

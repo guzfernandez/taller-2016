@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var pointsApi = require('./routes/api/points/points');
 var usersApi = require('./routes/api/users/users');
 var checkApi = require('./routes/api/check/check');
+var partidaApi = require('./routes/api/partida/partida');
 
 var app = express();
 
@@ -29,8 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api/points', pointsApi);
-app.use('/api/users/users', usersApi);
-app.use('/api/check/check', checkApi);
+app.use('/api/users', usersApi);
+app.use('/api/check', checkApi);
+app.use('/api/partida', partidaApi);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) { //eslint-disable-line no-unused-vars

@@ -5,10 +5,6 @@ var router = express.Router();
 router.get('/', function (req, res) {
   var client = pgClient.connect();
   var queryString = 'SELECT id, descripcion, ST_AsGeoJSON(location) AS location FROM points;';
-    /* +
-    'WHERE ST_DWithin(p.location, ' +
-    'Geography(ST_MakePoint(-71060316, 48.432044)), ' +
-    '100);';*/
   var query = client.query(queryString);
   query.on('end', function (result) {
     client.end();
