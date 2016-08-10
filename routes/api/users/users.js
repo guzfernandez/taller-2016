@@ -2,9 +2,9 @@ var express = require('express');
 var pgClient = require('../../../utils/database_connection');
 var router = express.Router();
 
-router.get('/', function (req, res) {
+router.get('/ranking', function (req, res) {
   var client = pgClient.connect();
-  var query = client.query('SELECT * FROM persona;');
+  var query = client.query('SELECT * FROM persona ORDER BY puntaje DESC;');
   query.on('end', function (result) {
     client.end();
     res.send(result.rows);
